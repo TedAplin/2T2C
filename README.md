@@ -26,4 +26,6 @@ When taking images try to insure your images match as closely as possible to the
 
 Stabilisation automatically uses channel 2, which is why it's important to put your signal for any cell identifying markers in this channel. In the case that your image only has 1 channel it will instead automatically use channel 1 instead.
 
-### Using the R code
+## Using the R code
+
+### Initialisation

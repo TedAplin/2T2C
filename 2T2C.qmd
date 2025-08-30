@@ -18,7 +18,6 @@ library(here)
 library(png)
 library(svglite)
 library(pals)
-library(ggbeeswarm)
 # library(doParallel)
 # closeAllConnections()
 # registerDoParallel(cores=16)
@@ -50,7 +49,7 @@ Place your data into the "Input" folder then enter in the following details here
 # Input file name in the format "file name.csv" MUST BE ENTERED
 InputFileName <- "MAX_CNGC 1 2158-6 14,07,25_1.csv"
 
-# Input time interval as a number with no quotation marks
+# Input time interval in seconds as a number with no quotation marks
 TimeInterval <- 3
 
 # Input sensor names in the form c("name for sensor 1", "name for sensor 2", ...)
@@ -131,7 +130,7 @@ for(i in 1:as.integer(max(Data$ROI))){
 }
 ```
 
-# Patch processes
+# Batch processes
 
 These processes have certain pre-requisites:
 

@@ -10,6 +10,3 @@ roiManager("multi-measure measure_all");
 title = getTitle();
 name = substring(title, 0 , title.length-4);
 saveAs("Results",  output + File.separator + name +".csv");
-//roiManager("Show All with labels");
-//run("RGB color");
-//selectImage(title);

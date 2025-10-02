@@ -9,7 +9,7 @@ Underscore <- function(x) {
 
 
 ### Extending the Input data to include more information
-DataExtending <- function(FileName , TimeInterval, SensorNames, ROINames){
+DataExtending <- function(FileName , TimeInterval, SensorName, ROINames){
   ## creating full data-set
   # calculations for identifying ROIs
   if (endsWith(InputFileName, ".csv") != TRUE){
@@ -47,18 +47,18 @@ DataExtending <- function(FileName , TimeInterval, SensorNames, ROINames){
     }
   }
   # adding sensor names
-  if (all(SensorNames == 0)){
-    Output$SensorName <- Output$Channel
+  if (all(SensorName == 0)){
+    Output$Sensor_Name <- Output$Channel
     cat("No sensor name data presented.", "\n")
   }
   else{
-    if (length(SensorNames) != max(Output$Channel)){
+    if (length(SensorName) != max(Output$Channel)){
       message('ERROR: Sensor name data entered incorrectly, ensure it is done in the form c("name for sensor 1", "name for sensor 2", ...) and that you have put a name for each sensor present. \n')
-      message("you entered names for ", length(SensorNames), " channels but need names for ", max(Output$Channel), " channels.", "\n")
-      Output$SensorName <- Output$Channel
+      message("you entered names for ", length(SensorName), " channels but need names for ", max(Output$Channel), " channels.", "\n")
+      Output$Sensor_Name <- Output$Channel
     }
     else{
-      Output$SensorName <- SensorNames[Output$Channel]
+      Output$Sensor_Name <- SensorName[Output$Channel]
       cat("Sensor name data added successfully!", "\n")
     }
   }
@@ -79,7 +79,7 @@ DataExtending <- function(FileName , TimeInterval, SensorNames, ROINames){
     }
   }
   Output$ROI_Name <- as.factor(Output$ROI_Name)
-  Output$SensorName <- as.factor(Output$SensorName)
+  Output$Sensor_Name <- as.factor(Output$Sensor_Name)
   ## Outputting data-set
   # creating FileName
   OutputName <- paste0(substr(FileName, 1, nchar(FileName) - 4), "-Extended.csv")
@@ -145,11 +145,11 @@ DataWrangling <- function(Input, CalciumChannel, BackgroundChannel, BackgroundRO
       Channel == BackgroundChannel ~ "Mean_Background"
     )) %>% 
     # selecting only relevant columns
-    select(Time, ROIName, ROI, Sensor, Mean) %>% 
+    select(Time, ROI_Name, ROI, Sensor, Mean) %>% 
     # merging rows with the same ROI
     pivot_wider(names_from = Sensor,
                 values_from = Mean) %>% 
-    arrange(Time, ROIName)
+    arrange(Time, ROI_Name)
   cat("Input wrangled successfully! \n")
   
   ## calculations
@@ -190,7 +190,7 @@ OctaveFile <- function(Input, FileName){
   cat("Table created successfully!")
   OutputName <- paste0(substr(FileName, 1, nchar(FileName) - 4), "-Octave_Input.csv")
   # Saving as a CSV
-  write.csv(Output, here("Output", "Data", OutputName), row.names = FALSE, col.names = FALSE)
+  write.csv(Output, here("Output", "Data", OutputName), row.names = FALSE)
   cat(".csv file successfully saved as", here("Output", "Data", OutputName))
 }
 
@@ -200,7 +200,7 @@ LineGraph <- function(Input, FileName, GraphName, YLimit, Resolution, i=0){
   GraphData <- filter(Input, ROI != 0)
   if (YLimit == 0)
     YLimit <- 1.1 * max(GraphData$Ratio)
-  Output <- ggplot(GraphData , aes(x = Time, y = Ratio, colour = ROIName)) +
+  Output <- ggplot(GraphData , aes(x = Time, y = Ratio, colour = ROI_Name)) +
     geom_line() +
     ylim(0, YLimit) +
     ggtitle(GraphName) +

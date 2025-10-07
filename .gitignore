@@ -2,3 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
+Input/Batch/*
+Input/Individual/*
+Input/Data/*
+Input/PNGs/*
+Input/SVGs/*

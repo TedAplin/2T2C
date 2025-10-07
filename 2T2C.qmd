@@ -48,16 +48,16 @@ Place your data into the "Input" folder then enter in the following details here
 ```{r}
 #| label: Data loading and manual data input
 # Input file name in the format "file name.csv" MUST BE ENTERED
-InputFileName <- "MAX_CNGC 1 2158-6 14,07,25_1-Octave_Input.csv"
+InputFileName <- "Test Input.csv"
 
 # Input time interval in seconds as a number with no quotation marks
-TimeInterval <- 3
+TimeInterval <- 7
 
 # Input sensor names in the form c("name for sensor 1", "name for sensor 2", ...)
-SensorNames <- c("GFP", "RFP")
+SensorNames <- c("Sensor 1", "Sensor 2")
 
 # Input ROI names in the form c("name for ROI 1", "name for ROI 2", ...)
-ROINames <- c("Airpore Old 1", "Airpore Old 2", "Airpore Old 3", "Airpore Medium 1", "Airpore Medium 2",  "background")
+ROINames <- c("ROI1", "ROI2", "ROI3", "ROI4", "Background1")
 
 
 
@@ -82,7 +82,7 @@ BackgroundChannel <- 2
 
 ## Inputting ROI information
 # Input background ROI number with no quotation marks, if you want to add multiple do it in the form c(1, 2, ...)
-BackgroundROI <- 6
+BackgroundROI <- 5
 
 
 ##################################################################
@@ -107,10 +107,10 @@ OctaveFile(Data, InputFileName)
 set Ylimit to 0 if you want it to be set automatically based on the largest value in your dataset.
 
 ```{r}
-GraphName <- "WT-8"
+GraphName <- "Testing Graph"
 
 # enter the maximum Y value for the graph, if you want this to be set automatically put 0
-YLimit <- 0.35
+YLimit <- 0
 
 # enter the resoltuion of the graph in the form c(X, y, DPI)
 Resolution <- c(2000,1000,200)
@@ -125,7 +125,7 @@ YLimitAuto <- LineGraph(Data, InputFileName, GraphName, YLimit, Resolution)
 # creating indivual graphs
 for(i in 1:as.integer(max(Data$ROI))){
   GraphData <- filter(Data, ROI == i)
-  OutputName <- paste0(GraphName, " - ", GraphData$ROIName[1])
+  OutputName <- paste0(GraphName, " - ", GraphData$ROI_Name[1])
   LineGraph(GraphData, InputFileName, OutputName, 
             YLimitAuto, Resolution,  i)
 }
@@ -148,15 +148,15 @@ In this
 ```{r}
 #| label: Batch Data Loading
 
-FileName <- "WT vs cngc3 airpore calcium signalling 12,08,25.csv"
+FileName <- ""
 
 # Enter the name of each sample as it appears in the filenames, in the format C("sample 1", "sample 2", ...)
-SampleNames <- c("WT", "CNGC")
+SampleNames <- c("Sample1", "Sample2")
 
 # Enter the name that you would like to display for each sample, in the format C("sample 1", "sample 2", ...)
 # ensure that they are in the same order as above
 # if you want to use SampleNames as DisplayNames then you can put in 0
-DisplayNames <- c("WT","cngc3")
+DisplayNames <- c("Sample 1","Sample 2")
 
 
 

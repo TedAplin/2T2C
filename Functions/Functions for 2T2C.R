@@ -379,7 +379,9 @@ Boxplot <- function(Input){
 MultiPlot <- function(Input, FileName, GraphName){
   for(i in 1:max(Input$ROI)){
     Output <- filter(Input, ROI == i)
+    print(Output)
     OutputName <- paste0(GraphName, " - ", Output$ROI_Name[1])
+    print(OutputName)
     LineGraph(Output, FileName, Outputname, i)
   }
 }

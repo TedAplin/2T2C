@@ -26,9 +26,14 @@ DataExtending <- function(FileName , TimeInterval, SensorName, ROINames){
   Count <- as.numeric(sum(Input$Frame == 1))
   ROICount <- Count/max(Input$Ch)
   # setting ROI numbers
-  Output <- Input %>% mutate(X = X - (Ch-1)*ROICount - (Frame-1)*Count)
+  Temp <- Input %>% mutate(X = X - (Ch-1)*ROICount - (Frame-1)*Count)
   # fixing column names
-  colnames(Output) <- c("ROI", "Area", "Mean", "Min", "Max", "Channel", "Frame")
+  
+  Output <- data.frame(
+    ROI = Temp$X,
+    Mean = Temp$Mean,
+    Channel = Temp$Ch,
+    Frame = Temp$Frame)
   
   ## adding user specified data
   # adding time data

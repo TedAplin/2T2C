@@ -23,12 +23,20 @@ DataExtending <- function(FileName , TimeInterval, SensorName, ROINames){
   
   ## loading
   Input <- read.csv(here("Input", "Individual", FileName))
+  
+  # Checking for necessary values
+  if (is.null(Input$X) == TRUE | is.null(Input$Mean) == TRUE | is.null(Input$Ch) == TRUE | is.null(Input$Frame) == TRUE){
+    message("\n ERROR: Not all necessary data present in Input file, ensure it contains the columns: Mean, Ch and Frame.", "\n")
+    message("To ensure correct file saving from ImageJ use the 'Measure ROI.ijm' macro from github.com/TedAplin/Fiji_macro_kit.", "\n")
+    return()
+  }
+  
+  # setting up ROI numbers
   Count <- as.numeric(sum(Input$Frame == 1))
   ROICount <- Count/max(Input$Ch)
-  # setting ROI numbers
   Temp <- Input %>% mutate(X = X - (Ch-1)*ROICount - (Frame-1)*Count)
-  # fixing column names
   
+  # Extracting relevant data
   Output <- data.frame(
     ROI = Temp$X,
     Mean = Temp$Mean,

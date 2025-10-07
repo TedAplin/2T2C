@@ -48,7 +48,7 @@ Place your data into the "Input" folder then enter in the following details here
 ```{r}
 #| label: Data loading and manual data input
 # Input file name in the format "file name.csv" MUST BE ENTERED
-InputFileName <- "MAX_CNGC 1 2158-6 14,07,25_1.csv"
+InputFileName <- "MAX_CNGC 1 2158-6 14,07,25_1-Octave_Input.csv"
 
 # Input time interval in seconds as a number with no quotation marks
 TimeInterval <- 3

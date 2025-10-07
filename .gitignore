@@ -4,6 +4,11 @@
 .Ruserdata
 Input/Batch/*
 Input/Individual/*
-Input/Data/*
-Input/PNGs/*
-Input/SVGs/*
+Output/Data/*
+Output/PNGs/*
+Output/SVGs/*
+!Input/Batch/**/
+!Input/Individual/**/
+!Output/Data/**/
+!Output/PNGs/**/
+!Output/SVGs/**/

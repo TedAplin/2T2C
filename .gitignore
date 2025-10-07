@@ -2,13 +2,3 @@
 .Rhistory
 .RData
 .Ruserdata
-Input/Batch/*
-Input/Individual/*
-Output/Data/*
-Output/PNGs/*
-Output/SVGs/*
-!Input/Batch/**/
-!Input/Individual/**/
-!Output/Data/**/
-!Output/PNGs/**/
-!Output/SVGs/**/

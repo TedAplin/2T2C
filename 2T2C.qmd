@@ -48,7 +48,7 @@ Place your data into the "Input" folder then enter in the following details here
 ```{r}
 #| label: Data loading and manual data input
 # Input file name in the format "file name.csv" MUST BE ENTERED
-InputFileName <- "Test Input.csv"
+InputFileName <- "Test WT 1.csv"
 
 # Input time interval in seconds as a number with no quotation marks
 TimeInterval <- 7
@@ -57,7 +57,7 @@ TimeInterval <- 7
 SensorNames <- c("Sensor 1", "Sensor 2")
 
 # Input ROI names in the form c("name for ROI 1", "name for ROI 2", ...)
-ROINames <- c("ROI1", "ROI2", "ROI3", "ROI4", "Background1")
+ROINames <- c("ROI1", "ROI2", "ROI3", "ROI4", "ROI5", "Background1")
 
 
 
@@ -82,7 +82,7 @@ BackgroundChannel <- 2
 
 ## Inputting ROI information
 # Input background ROI number with no quotation marks, if you want to add multiple do it in the form c(1, 2, ...)
-BackgroundROI <- 5
+BackgroundROI <- 6
 
 
 ##################################################################

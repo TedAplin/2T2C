@@ -270,9 +270,13 @@ BatchDataset <- function(SampleNames, DisplayNames, FileName){
   List <- list.files(path = here("Input", "Batch"))
   FileList <- character(0)
   
+  if (is.na(List[1]) == TRUE) {
+    return("ERROR: There are no files in the Input/Batch folder, ensure that you put your data in this folder before running this section.")
+  }
+  
   ## checking if .csv
   for (i in 1:length(List)) {
-    if (endsWith(List[i], ".csv")) {      # Check for file extension
+    if (is.na(List[i]) == FALSE && endsWith(List[i], ".csv")) {       # Check for file extension
       FileList <- c(FileList, List[i])      # Append matching files to FileList
     }
     else{

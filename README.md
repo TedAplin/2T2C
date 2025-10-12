@@ -1,6 +1,6 @@
 # Ted's Tools for Calcium Counting - 2T2C
 
--   [About] (#About)
+-   [About] (##About)
 
 -   [Installation]
 

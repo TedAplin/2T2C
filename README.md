@@ -1,13 +1,20 @@
----
-title: "Ted's Tools for Calcium Counting - 2T2C"
-output:
-  html_document:
-    toc: true
-    toc_depth: 2
-    number_sections: false
----
+# Ted's Tools for Calcium Counting - 2T2C
 
-# About
+-   [About]
+
+-   [Installation]
+
+    -   [Prerequisites]
+
+    -   [Downloading]
+
+    -   [First time initialisation]
+
+-   [Usage]
+
+    -   [File Input]
+
+## About
 
 This is a data processing pipeline for Fluorescent imaging data (specifically calcium imaging)
 
@@ -23,9 +30,9 @@ This project takes intensometric or ratiometric fluorescence data measured using
 
 5.  **Combine** multiple processed Data-sets into one and compare the average background intensity of each
 
-# Installation
+## Installation
 
-## prerequisites
+### prerequisites
 
 Should work with any operating system and with many versions of R and Rstudio, the specific versions I Used are as follows
 
@@ -35,9 +42,9 @@ Should work with any operating system and with many versions of R and Rstudio, t
 
 -   **renv** 1.1.5 (comes preinstalled with R 4.5.1, you can use the Rstudio package manager to install or update it if it is not present and correct)
 
-## Downloading
+### Downloading
 
-### **Using Git commands**
+**Using Git commands**
 
 Open terminal and move to whatever location you want the files to download then run:
 
@@ -45,7 +52,7 @@ Open terminal and move to whatever location you want the files to download then 
 git clone https://github.com/TedAplin/2T2C.git
 ```
 
-### Manually
+**Manually**
 
 1.  Click on the green "Code" button above the files on the github page
 
@@ -55,7 +62,7 @@ git clone https://github.com/TedAplin/2T2C.git
 
 3.  Extract the files in the ZIP folder to wherever you want the project to be located
 
-## First time initialisation
+### First time initialisation
 
 This installs all the required packages from the "renv.lock" file so that you can use the code. If issues start happening, it is worth running these instructions again to re-install all packages.
 
@@ -67,6 +74,6 @@ This installs all the required packages from the "renv.lock" file so that you ca
 
 4.  press yes to any prompts in the console to install all packages
 
-# Usage
+## Usage
 
-## File Input
+### File Input

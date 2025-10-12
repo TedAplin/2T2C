@@ -101,20 +101,30 @@ Octave for Mac: <https://octave-app.org/Developer-Downloads.html> Octave for Win
 
 ```{r}
 #| label: Creation of Octave File
+##################################################################
+## functions for Changing Data format, do not touch!
+# Creating the new Dataset
 OctaveFile(Data, InputFileName)
 ```
 
 # Visualisation
 
-set Ylimit to 0 if you want it to be set automatically based on the largest value in your dataset.
+Creates graphs from the data set input. Makes 1 graph with all data shown together, then a separate graph for each individual ROI.
+
+You can set the y limit manually so it can be compared to other graphs well. If you set it to 0 then the Y limit is set automatically. The automatic Y limit takes the largest value from the entire data-set, and then sets the Y limit for all graphs from the same data-set to be the same so they can be compared.
+
+The resolution input sets the pixel count for the X and Y dimensions of the PNG output. The DPI sets the scale of the contents of the image e.g. thickness of lines, size of text etc. I would recommend c(2000,1000,200).
+
+This also outputs each graph as an SVG as well as a PNG, I have calculations with translate the sizes of PNG to SVG, so the SVG will have the exact same aspect ratio and scaling of contents as the PNG.
 
 ```{r}
+# enter the name you would like the graphs to have, ensure to put it in quotation marks
 GraphName <- "Testing Graph"
 
-# enter the maximum Y value for the graph, if you want this to be set automatically put 0
+# enter the maximum Y value for the graph as a number with no quotation marks, if you want this to be set automatically put 0
 YLimit <- 0
 
-# enter the resoltuion of the graph in the form c(X, y, DPI)
+# enter the resoltuion of the graph in the form c(X, Y, DPI)
 Resolution <- c(2000,1000,200)
 
 
@@ -123,7 +133,6 @@ Resolution <- c(2000,1000,200)
 ## functions for creating graphs, do not touch!
 # Creating a graph of all data
 YLimitAuto <- LineGraph(Data, InputFileName, GraphName, YLimit, Resolution)
-
 # creating indivual graphs
 for(i in 1:as.integer(max(Data$ROI))){
   GraphData <- filter(Data, ROI == i)
@@ -139,7 +148,7 @@ These processes have certain pre-requisites:
 
 -   You have run all data that you would like to use through [loading] and [Data Wrangling]
 
--   all of their files are in Input/Batch
+-   Place all of the -Wrangling files into Input/Batch
 
 -   all files from a certain sample (e.g. Wild type, mutant, treatment, etc.) share a common string of characters in their filenames
 
@@ -150,14 +159,15 @@ In this Block you can combine together multiple files into one larger data-set. 
 ```{r}
 #| label: Batch Data Loading
 
+# enter the name that you want to give the combined data-set, make sure it ends in .csv and is surrounded by quotation marks
 FileName <- "Test Batch Dataset.csv"
 
-# Enter the name of each sample as it appears in the filenames, in the format C("sample 1", "sample 2", ...)
+# Enter the name of each type of sample as it appears in the filenames, in the format C("sample 1", "sample 2", ...)
 SampleNames <- c("WT", "Mut")
 
-# Enter the name that you would like to display for each sample, in the format C("sample 1", "sample 2", ...)
+# Enter the name that you would like to display for each type of sample, in the format C("sample 1", "sample 2", ...)
 # ensure that they are in the same order as above
-# if you want to use SampleNames as DisplayNames then you can put in 0
+# if you want to use the names as they appear in the filenames then just put 0
 DisplayNames <- 0
 
 
@@ -170,11 +180,13 @@ BatchData <- BatchDataset(SampleNames, DisplayNames, FileName)
 
 ## Load a different file
 
-If you place a pre-made Batch data-set in the Input/Individual folder then you can load it here.
+If you place a pre-made Batch data-set in the Input folder then you can load it here.
 
-If it returns "no such file or directory" or "cannot open the connection" then your file is not in the Input/Individual folder, or you have misspelled it.
+If it returns "no such file or directory" or "cannot open the connection" then your file is not in the Input folder, or you have misspelled it.
 
 ```{r}
+
+# enter in the name of the batch data-set you want to import, ensure that it ends in .csv and is surrounded by quotation marks
 FileName <- "Test Batch Dataset.csv"
 
 
@@ -187,9 +199,16 @@ BatchData <- read.csv(here("Input", FileName))
 
 ## Comparing background
 
+This script compares the average background value of samples from different types, e.g. WT and mutant.
+
+It displays this as a box and whisker plot, as well as a table showing the average value for each sample.
+
+ensure that you have either prepared a batch data set or loaded a prepared batch data-set before using it
+
 ```{r}
 ##################################################################
 ## functions for creating Dataset, do not touch!
 # Creating dataset from supplied files
 Data <- Boxplot(BatchData)
+print(Data)
 ```

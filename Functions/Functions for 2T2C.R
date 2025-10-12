@@ -355,10 +355,12 @@ BatchDataset <- function(SampleNames, DisplayNames, FileName){
   ## showing the progress
   cat("Batch file created as: ",here("Output", "Data", FileName), ", information shall now be presented: \n")
   cat("In total ", sum(Counter$Count), " files were correctly processed, a breakdown of how many are in each sample has been created for you to view \n")
-  message("In total ", nrow(UnusedFiles), " files were not able to be added, a breakdown of each file and the reason for not adding has been created too")
+  if (nrow(UnusedFiles) > 0){
+    message("ERROR: In total ", nrow(UnusedFiles), " files were not able to be added, a breakdown of each file and the reason for not adding has been created too")
+    view(UnusedFiles)
+  }
   
   Counter$Count[nrow(Counter)] <- nrow(UnusedFiles)
-  view(UnusedFiles)
   view(Counter)
   return(Output)
 }

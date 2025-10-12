@@ -20,7 +20,7 @@
 
     -   [Running the scripts](#running-the-scripts)
 
--   [Making modifications (Advanced)](#making-modifications-(advanced))
+-   [Making modifications (Advanced)](#making-modifications-advanced)
 
 ## About
 

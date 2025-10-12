@@ -14,7 +14,7 @@
 
     -   [File Input](#file-input)
 
-## About
+## About {#about}
 
 This is a data processing pipeline for Fluorescent imaging data (specifically calcium imaging)
 
@@ -30,9 +30,9 @@ This project takes intensometric or ratiometric fluorescence data measured using
 
 5.  **Combine** multiple processed Data-sets into one and compare the average background intensity of each
 
-## Installation
+## Installation {#installation}
 
-### prerequisites
+### prerequisites {#prerequisites}
 
 Should work with any operating system and with many versions of R and Rstudio, the specific versions I Used are as follows
 
@@ -42,7 +42,7 @@ Should work with any operating system and with many versions of R and Rstudio, t
 
 -   **renv** 1.1.5 (comes preinstalled with R 4.5.1, you can use the Rstudio package manager to install or update it if it is not present and correct)
 
-### Downloading
+### Downloading {#downloading}
 
 **Using Git commands**
 
@@ -56,13 +56,13 @@ git clone https://github.com/TedAplin/2T2C.git
 
 1.  Click on the green "Code" button above the files on the github page
 
-![](images/clipboard-2712904659.png){width="528"}
+![Download image](images/clipboard-2712904659.png){alt="Image description" width="627"}
 
 2.  Click on Download ZIP at the bottom of the popup window
 
 3.  Extract the files in the ZIP folder to wherever you want the project to be located
 
-### First time initialisation
+### First time initialisation {#first-time-initialisation}
 
 This installs all the required packages from the "renv.lock" file so that you can use the code. If issues start happening, it is worth running these instructions again to re-install all packages.
 
@@ -74,6 +74,6 @@ This installs all the required packages from the "renv.lock" file so that you ca
 
 4.  press yes to any prompts in the console to install all packages
 
-## Usage
+## Usage {#usage}
 
-### File Input
+### File Input {#file-input}

@@ -16,13 +16,13 @@ DataExtending <- function(FileName , TimeInterval, SensorName, ROINames){
     message('ERROR: You must enter a filename in the form "file name.csv"', "\n")
     return()
   } 
-  if (file.exists(here("Input", "Individual", FileName)) == FALSE){
+  if (file.exists(here("Input", FileName)) == FALSE){
     message('ERROR: This file does not exist, check the Input folder to see if the file is present and has the right name!', "\n")
   return()
   }
   
   ## loading
-  Input <- read.csv(here("Input", "Individual", FileName))
+  Input <- read.csv(here("Input", FileName))
   
   # Checking for necessary values
   if (is.null(Input$X) == TRUE | is.null(Input$Mean) == TRUE | is.null(Input$Ch) == TRUE | is.null(Input$Frame) == TRUE){
@@ -98,7 +98,7 @@ DataExtending <- function(FileName , TimeInterval, SensorName, ROINames){
   OutputName <- paste0(substr(FileName, 1, nchar(FileName) - 4), "-Extended.csv")
   # Saving as a CSV
   write.csv(Output, here("Output", "Data", OutputName), row.names = FALSE)
-  cat(".csv file successfully saved as", here("Output", "Input", OutputName))
+  cat(".csv file successfully saved as", here("Output", "Data", OutputName))
   # returning the data-set
   return(Output)
 }

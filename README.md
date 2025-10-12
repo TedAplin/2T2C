@@ -2,17 +2,17 @@
 
 -   [About](#about)
 
--   [Installation]
+-   [Installation](#installation)
 
-    -   [Prerequisites]
+    -   [Prerequisites](#prerequisites)
 
-    -   [Downloading]
+    -   [Downloading](#downloading)
 
-    -   [First time initialisation]
+    -   [First time initialisation](#first-time-initialisation)
 
--   [Usage]
+-   [Usage](#usage)
 
-    -   [File Input]
+    -   [File Input](#file-input)
 
 ## About
 

@@ -1,33 +1,72 @@
-# Ted's Tools for Calcium Counting - 2T2C
+---
+title: "Ted's Tools for Calcium Counting - 2T2C"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    number_sections: false
+---
 
 # About
 
-This is a data processing pipeline for Calcium signalling data. It's original aim is to count the number and frequency of calcium for multiple cells within a calcium signalling time series.
+This is a data processing pipeline for Fluorescent imaging data (specifically calcium imaging)
+
+This project takes intensometric or ratiometric fluorescence data measured using ImageJ and can:
+
+1.  **Add extra data** such as sensors used, time intervals and names of ROIs
+
+2.  Conduct **simple calculations** such as ratio and removal of background
+
+3.  **Export the data** in file formats more suitable for further data analysis
+
+4.  Quickly **create graphs** for initial visual analysis of fluorescent activity
+
+5.  **Combine** multiple processed Data-sets into one and compare the average background intensity of each
 
 # Installation
 
 ## prerequisites
 
--   Fiji (latest version)
+Should work with any operating system and with many versions of R and Rstudio, the specific versions I Used are as follows
 
-    -   necessary for using any of the Image processing Macros
+-   **R** 4.5.1 <https://cran.rstudio.com>
 
-    -   can use standard ImageJ with
+-   **Rstudio** 2025.09.01 <https://posit.co/download/rstudio-desktop/>
 
-## Taking images
+-   **renv** 1.1.5 (comes preinstalled with R 4.5.1, you can use the Rstudio package manager to install or update it if it is not present and correct)
 
-***When taking images try to insure your images match as closely as possible to these parameters:***
+## Downloading
 
--   ***files are less than 4gb after maximum intensity projection, if not they will be automatically binned either 2\*2 or 3\*3 before stabilisation is applied***
+### **Using Git commands**
 
-# Preparing data with Fiji/ ImageJ
+Open terminal and move to whatever location you want the files to download then run:
 
-Im the "ImageJ Macros" folder, there are a variety of macros for automating various tasks in Fiji/ ImageJ.
+``` bash
+git clone https://github.com/TedAplin/2T2C.git
+```
 
-#### stabilisation
+### Manually
 
-Stabilisation automatically uses channel 2, which is why it's important to put your signal for any cell identifying markers in this channel. In the case that your image only has 1 channel it will instead automatically use channel 1 instead.
+1.  Click on the green "Code" button above the files on the github page
 
-## Using the R code
+![](images/clipboard-2712904659.png){width="528"}
 
-### Initialisation
+2.  Click on Download ZIP at the bottom of the popup window
+
+3.  Extract the files in the ZIP folder to wherever you want the project to be located
+
+## First time initialisation
+
+This installs all the required packages from the "renv.lock" file so that you can use the code. If issues start happening, it is worth running these instructions again to re-install all packages.
+
+1.  Open the project by opening the "2T2C.Rproj" file with Rstudio
+
+2.  In the Files page in the bottom right, open up "initialisation.R"
+
+3.  Press Ctrl + A then run
+
+4.  press yes to any prompts in the console to install all packages
+
+# Usage
+
+## File Input

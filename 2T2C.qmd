@@ -19,9 +19,6 @@ library(png)
 library(svglite)
 library(pals)
 library(ggbeeswarm)
-# library(doParallel)
-# closeAllConnections()
-# registerDoParallel(cores=16)
 
 # loading personal functions
 source(here("Functions", "Functions for 2T2C.R"))
@@ -50,7 +47,7 @@ Place your data into the "Input" folder then enter in the following details here
 ```{r}
 #| label: Data loading and manual data input
 # Input file name in the format "file name.csv" MUST BE ENTERED
-InputFileName <- "Test Mut 1.csv"
+InputFileName <- "Test WT 1.csv"
 
 # Input time interval in seconds as a number with no quotation marks
 TimeInterval <- 7
@@ -93,18 +90,20 @@ BackgroundROI <- 6
 Data <- DataWrangling(OGData, CalciumChannel, BackgroundChannel, BackgroundROI, InputFileName)
 ```
 
-# Octave integration
+# Alternative file format
 
-This is for use with the previously made code for Octave. To use, please install Octave from this link and follow the Octave section of the README file:
+This section creates a differently formatted file with the data that may work better in some pipelines.
 
-Octave for Mac: <https://octave-app.org/Developer-Downloads.html> Octave for Windows: <https://www.gnu.org/software/octave/download.html#ms-windows>
+The data is formatted with the first column as the time data, then the following columns contain data from each ROI like this:
+
+![](images/clipboard-2899195975.png)
 
 ```{r}
-#| label: Creation of Octave File
+#| label: Creation of alternative format file
 ##################################################################
 ## functions for Changing Data format, do not touch!
 # Creating the new Dataset
-OctaveFile(Data, InputFileName)
+AlternativeFile(Data, InputFileName)
 ```
 
 # Visualisation

@@ -1,0 +1,9 @@
+cff-version: 1.1.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: Aplin
+  given-names: Edward
+orcid: https://orcid.org/0009-0003-2175-5365
+title:TedAplin/2T2C: v1.0
+version: v1.0
+date-released: 2025-10-22

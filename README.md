@@ -24,6 +24,8 @@
 
 ## About {#about}
 
+[![](https://zenodo.org/badge/DOI/10.5281/zenodo.17417728.svg)](https://doi.org/10.5281/zenodo.17417728)
+
 This is a data processing pipeline for Fluorescent imaging data (specifically calcium imaging)
 
 This project takes intensometric or ratiometric fluorescence data measured using ImageJ and can:
@@ -64,23 +66,25 @@ Should work with any operating system and with many versions of R and Rstudio, t
 
 ### Downloading {#downloading}
 
-**Using Git commands**
+**Cloning the current main channel**
 
-Open terminal and move to whatever location you want the files to download then run:
+Open terminal and navigate to whatever location you want the files to download then run:
 
 ``` bash
 git clone https://github.com/TedAplin/2T2C.git
 ```
 
-**Manually**
+**downloading the latest release**
 
-1.  Click on the green "Code" button above the files on the github page
+1.  if you're on the main github page, then go to the latest release on the right hand side
 
-![](images/clipboard-2712904659.png)
+![](images/clipboard-3976156845.png)
 
-2.  Click on Download ZIP at the bottom of the popup window
+2.  Download as a .zip (or tar.gz if you prefer)
 
-3.  Extract the files in the ZIP folder to wherever you want the project to be located
+![](images/clipboard-1170442001.png)
+
+2.  Extract the files in the ZIP folder to wherever you want the project to be located
 
 ### First time initialisation {#first-time-initialisation}
 

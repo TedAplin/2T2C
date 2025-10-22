@@ -22,7 +22,7 @@
 
 -   [Making modifications (Advanced)](#making-modifications-advanced)
 
-## About
+## About {#about}
 
 This is a data processing pipeline for Fluorescent imaging data (specifically calcium imaging)
 
@@ -38,13 +38,9 @@ This project takes intensometric or ratiometric fluorescence data measured using
 
 5.  **Combine** multiple processed Data-sets into one and compare the average background intensity of each
 
-### IMPORTANT NOTES
-
--   **DO NOT DELETE THE INPUT, OUTPUT FOLDERS, OR ANY SUBFOLDERS, THIS WILL CAUSE THE SCRIPTS TO BREAK**
+### IMPORTANT NOTES {#important-notes}
 
 -   **ONCE YOU HAVE LOOKED AT THE DEMONSTRATION DATA, IT IS BEST TO REMOVE IT FROM THE FOLDERS, YOU CAN ALWAYS REDOWNLOAD IT LATER**
-
-    -   **BUT MAKE SURE YOU DON'T DELETE THE FILE SYSTEMS WHEN DOING SO, AS MENTIONED ABOVE**
 
 -   **AT NO POINTS IS DATA IN THE INPUT FOLDER DELETED OR OVERWRITTEN BY THE SCRIPTS, HOWEVER DATA IN THE OUTPUT FOLDERS CAN BE**
 
@@ -54,9 +50,9 @@ This project takes intensometric or ratiometric fluorescence data measured using
 
     -   **RUN THE INITIALISATION SCRIPT (REQUIRED EVERY TIME YOU OPEN "2T2C.QMD")**
 
-## Installation
+## Installation {#installation}
 
-### prerequisites
+### prerequisites {#prerequisites}
 
 Should work with any operating system and with many versions of R and Rstudio, the specific versions I Used are as follows
 
@@ -66,7 +62,7 @@ Should work with any operating system and with many versions of R and Rstudio, t
 
 -   **renv** 1.1.5 (comes preinstalled with R 4.5.1, you can use the Rstudio package manager to install or update it if it is not present and correct)
 
-### Downloading
+### Downloading {#downloading}
 
 **Using Git commands**
 
@@ -86,7 +82,7 @@ git clone https://github.com/TedAplin/2T2C.git
 
 3.  Extract the files in the ZIP folder to wherever you want the project to be located
 
-### First time initialisation
+### First time initialisation {#first-time-initialisation}
 
 This installs all the required packages from the "renv.lock" file so that you can use the code. If issues start happening, it is worth running these instructions again to re-install all packages.
 
@@ -98,9 +94,9 @@ This installs all the required packages from the "renv.lock" file so that you ca
 
 4.  press yes to any prompts in the console to install all packages
 
-## Usage
+## Usage {#usage}
 
-### Demonstration files
+### Demonstration files {#demonstration-files}
 
 **Before using 2T2C with your own data, I would recommend using the test data.**
 
@@ -124,7 +120,7 @@ This allows you to see how Input data sets should look as well as how they are m
 
 Once you have looked through this it may be best to delete them to remove clutter, but make sure that you **DO NOT DELETE THE INPUT, OUTPUT FOLDERS, OR ANY SUBFOLDERS!**
 
-### File Input
+### File Input {#file-input}
 
 Files should be placed in the "Input Folder".
 
@@ -141,7 +137,7 @@ The file should of the format .csv and look something like this:
 
 If you are unsure how to use the ImageJ ROI measure tool or are having difficulties creating Input files that will be accepted I recommend using the "Measure ROI" macro from my Fiji macro toolkit, accessible at: <https://github.com/TedAplin/Fiji-Macro-Toolkit>
 
-### Running the scripts
+### Running the scripts {#running-the-scripts}
 
 All scripts are found in the file "2T2C.qmd"
 
@@ -167,9 +163,11 @@ This is where you enter your parameters and run the script. It has extra informa
 
 At the bottom of each script is a section which runs the script based on your parameters, **do not modify this section.**
 
-When you want to run a script, press the green play button in the top right (highlighted with a red box in this image:
+When you want to run a script, press the green play button in the top right (highlighted with a red box in this image):
 
 ![](images/clipboard-1969130349.png)
+
+**if there is an issue running a block, then I would recommend pressing the grey arrow to the left of the green one, this will run any script before this one.**
 
 3.  The Output
 
@@ -181,7 +179,7 @@ For errors, I have tried to predict as many mistakes people could make when usin
 
 ![](images/clipboard-3037858.png)
 
-## Making modifications (Advanced)
+## Making modifications (Advanced) {#making-modifications-advanced}
 
 if you wish to make changes to my code to make it better suit your needs, then the code for all of my functions can be found in "Functions/Functions for 2T2C.R". Feel free to make changes or add your own functions.
 

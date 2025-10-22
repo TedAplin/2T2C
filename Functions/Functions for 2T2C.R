@@ -10,6 +10,13 @@ Underscore <- function(x) {
 
 ### Extending the Input data to include more information
 DataExtending <- function(FileName , TimeInterval, SensorName, ROINames){
+  if (!dir.exists(here("Input"))){
+    dir.create(here("Input"))
+  }
+  if (!dir.exists(here("Output", "Data"))){
+    dir.create(here("Output", "Data"), recursive = TRUE)
+  }
+  
   ## creating full data-set
   # calculations for identifying ROIs
   if (endsWith(InputFileName, ".csv") != TRUE){
@@ -106,6 +113,10 @@ DataExtending <- function(FileName , TimeInterval, SensorName, ROINames){
 
 ### Wrangling the data into a format more useful for analysis
 DataWrangling <- function(Input, CalciumChannel, BackgroundChannel, BackgroundROI, FileName){
+  if (!dir.exists(here("Output", "Data"))){
+    dir.create(here("Output", "Data"), recursive = TRUE)
+  }
+  
   ## Error checking
   Error <- FALSE
   if (data.class(BackgroundROI) != "numeric" | data.class(BackgroundChannel) != "numeric" | data.class(CalciumChannel) != "numeric" ){
@@ -193,15 +204,19 @@ DataWrangling <- function(Input, CalciumChannel, BackgroundChannel, BackgroundRO
 }
 
 
-### Creating a dataset that is useable with the octave protocol, which can be found in the "Octave" folder
-OctaveFile <- function(Input, FileName){
-  Output <- filter(Input, ROI != 0) %>% 
-    select(ROI, Time, Ratio) %>% 
-    pivot_wider(names_from = ROI,
+### Creating an alternative data format that may work better for other pipelines
+AlternativeFile <- function(Input, FileName){
+  if (!dir.exists(here("Output", "Data"))){
+    dir.create(here("Output", "Data"), recursive = TRUE)
+  }
+  
+  Output <- Input %>% 
+    select(ROI_Name, Time, Ratio) %>% 
+    pivot_wider(names_from = ROI_Name,
                 values_from = Ratio) %>% 
     arrange(Time)
   cat("Table created successfully!")
-  OutputName <- paste0(substr(FileName, 1, nchar(FileName) - 4), "-Octave_Input.csv")
+  OutputName <- paste0(substr(FileName, 1, nchar(FileName) - 4), "-Alternative.csv")
   # Saving as a CSV
   write.csv(Output, here("Output", "Data", OutputName), row.names = FALSE)
   cat(".csv file successfully saved as", here("Output", "Data", OutputName))
@@ -210,6 +225,12 @@ OctaveFile <- function(Input, FileName){
 
 ### creates a linegraph based on the data provided
 LineGraph <- function(Input, FileName, GraphName, YLimit, Resolution, i=0){
+  if (!dir.exists(here("Output", "PNGs"))){
+    dir.create(here("Output", "PNGs"), recursive = TRUE)
+  }
+  if (!dir.exists(here("Output", "SVGs"))){
+    dir.create(here("Output", "SVGs"), recursive = TRUE)
+  }
   GraphData <- filter(Input, ROI != 0)
   if (YLimit == 0)
     YLimit <- 1.1 * max(GraphData$Ratio)
@@ -243,6 +264,13 @@ LineGraph <- function(Input, FileName, GraphName, YLimit, Resolution, i=0){
 
 ### Creates a Dataset from multiple for use in normalisation
 BatchDataset <- function(SampleNames, DisplayNames, FileName){
+  if (!dir.exists(here("Input", "Batch"))){
+    dir.create(here("Input", "Batch"), recursive = TRUE)
+  }
+  if (!dir.exists(here("Output", "Data"))){
+    dir.create(here("Output", "Data"), recursive = TRUE)
+  }
+  
   ## error messages
   if (length(SampleNames) < 1 |  data.class(SampleNames) != "character"){
     message('ERROR: Sample Name Data entered incorrectly, ensure that it is in the form c("sample 1", "sample 2", ...) \n')
@@ -355,10 +383,12 @@ BatchDataset <- function(SampleNames, DisplayNames, FileName){
   ## showing the progress
   cat("Batch file created as: ",here("Output", "Data", FileName), ", information shall now be presented: \n")
   cat("In total ", sum(Counter$Count), " files were correctly processed, a breakdown of how many are in each sample has been created for you to view \n")
-  message("In total ", nrow(UnusedFiles), " files were not able to be added, a breakdown of each file and the reason for not adding has been created too")
+  if (nrow(UnusedFiles) > 0){
+    message("ERROR: In total ", nrow(UnusedFiles), " files were not able to be added, a breakdown of each file and the reason for not adding has been created too")
+    view(UnusedFiles)
+  }
   
   Counter$Count[nrow(Counter)] <- nrow(UnusedFiles)
-  view(UnusedFiles)
   view(Counter)
   return(Output)
 }
@@ -391,6 +421,10 @@ MultiPlot <- function(Input, FileName, GraphName){
 }
 
 BackgroundTable <- function(Input, Sample, FileName, InputName){
+  if (!dir.exists(here("Output", "Data"))){
+    dir.create(here("Output", "Data"), recursive = TRUE)
+  }
+  
   Input <- filter(Input, ROI == 0)
   if (nrow(Input) == 0){
     Message("ERROR: There is no background ROI presented in the given data \n")

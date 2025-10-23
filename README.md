@@ -1,5 +1,7 @@
 # Ted's Tools for Calcium Counting - 2T2C
 
+[![](https://zenodo.org/badge/DOI/10.5281/zenodo.17417728.svg)](https://doi.org/10.5281/zenodo.17417728)
+
 -   [About](#about)
 
     -   [IMPORTANT NOTES](#important-notes)
@@ -23,8 +25,6 @@
 -   [Making modifications (Advanced)](#making-modifications-advanced)
 
 ## About {#about}
-
-[![](https://zenodo.org/badge/DOI/10.5281/zenodo.17417728.svg)](https://doi.org/10.5281/zenodo.17417728)
 
 This is a data processing pipeline for Fluorescent imaging data (specifically calcium imaging)
 

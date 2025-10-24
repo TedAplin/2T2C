@@ -1,8 +1,8 @@
-title: 'TedAplin/2T2C: v1.0'
+title: 'TedAplin/2T2C'
 abstract: A set of R scripts for initial manipulation and visualization of Intensity data
 doi: 10.5281/zenodo.17417728
 repository-code: https://github.com/TedAplin/Fiji-Macro-Toolkit
-version: v1.0
+version: 1.0
 date-released: 2025-10-24
 message: If you use this software, please cite it as below.
 authors:
